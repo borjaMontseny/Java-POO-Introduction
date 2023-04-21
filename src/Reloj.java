@@ -1,4 +1,3 @@
-
 public class Reloj {
 
 	// Propiedades
@@ -62,23 +61,7 @@ public class Reloj {
 	// toString
 	@Override
 	public String toString() {
-		String horasString = Integer.toString(horas);
-		String minutosString = Integer.toString(minutos);
-		String segundosString = Integer.toString(segundos);
-
-		if (horas < 10) {
-			horasString = "0" + horasString;
-		}
-
-		if (minutos < 10) {
-			minutosString = "0" + minutosString;
-		}
-
-		if (segundos < 10) {
-			segundosString = "0" + segundosString;
-		}
-
-		return horasString + ":" + minutosString + ":" + segundosString;
+		return String.format("%02d:%02d:%02d", this.horas, this.minutos, this.segundos);
 	}
 
 	// Funció per a poder modificar l’hora sencera.
@@ -118,19 +101,10 @@ public class Reloj {
 
 	// Funció per a poder sumar un nombre determinat de segons a l’hora actual.
 	public void sumarSegons(int segons) {
-		// acumulem els segons
-		this.segundos += segons;
 
-		if (this.segundos >= 60) { // si pasen de 60
-			// els que es poden dividir els pasem a minuts
-			this.minutos += this.segundos / 60;
-			// els que no arriben a 60 es queden en segons
-			this.segundos %= 60;
+		for (int i = 0; i < segons; i++) {
+			sumarSegon();
 		}
-		if (this.minutos >= 60) {
-			this.horas += this.minutos / 60;
-			this.minutos %= 60;
-		}
-		this.horas %= 24; // si se pasa de 24, es un dia, solo queremos horas
+
 	}
 }

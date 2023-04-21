@@ -21,6 +21,9 @@ public class App {
 
 		System.out.println("\n" + reloj1.toString());
 
+		Reloj reloj2 = new Reloj();
+		System.out.println("\nConstructor por defecto: " + reloj2.toString());
+
 	}
 
 }
